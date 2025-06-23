@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "./redux/contactsOps";
+import { fetchContacts } from "./redux/contacts/operations";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
-import "./App.css";
-import { selectLoading } from "./redux/contactsSlice";
+import { selectLoading } from "./redux/contacts/slice";
 import { BarLoader } from "react-spinners";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();

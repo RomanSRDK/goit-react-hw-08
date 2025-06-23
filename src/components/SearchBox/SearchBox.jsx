@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { useDispatch } from "react-redux";
-import { findContact } from "../../redux/filtersSlice";
+import { findContact } from "../../redux/filters/slice";
 import styles from "./SearchBox.module.css";
 
 function SearchBox() {
