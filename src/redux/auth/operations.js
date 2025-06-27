@@ -14,6 +14,19 @@ export const register = createAsyncThunk(
     }
   }
 );
-export const login = createAsyncThunk("auth/login", async () => {});
+
+export const login = createAsyncThunk(
+  "auth/login",
+  async (values, ThunkAPI) => {
+    try {
+      const { data } = await axios.post("users/login", values);
+      return data;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const logout = createAsyncThunk("auth/logout", async () => {});
+
 export const refreshUser = createAsyncThunk("auth/refresh", async () => {});

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register } from "./operations";
+import { login, register } from "./operations";
 
 const slice = createSlice({
-  name: "auth", //имя слайса используется в типах экшенов
+  name: "auth",
   initialState: {
     user: {
       name: null,
@@ -11,13 +11,34 @@ const slice = createSlice({
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    isLoading: false,
   },
   extraReducers: (builder) => {
-    builder.addCase(register.fulfilled, (state, action) => {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
-    });
+    builder
+      .addCase(register.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoading = false;
+        state.isLoggedIn = true;
+      })
+      .addCase(register.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(login.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoading = false;
+        state.isLoggedIn = true;
+      })
+      .addCase(login.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
 });
 

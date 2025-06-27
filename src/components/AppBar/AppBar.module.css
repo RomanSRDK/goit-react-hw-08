@@ -1,9 +1,14 @@
 .nav {
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
   padding: 12px 16px;
   margin-bottom: 10px;
   border-bottom: 2px solid #ccc;
+}
+
+.gap {
+  display: flex;
+  gap: 12px;
 }
 
 .link {

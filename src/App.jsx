@@ -7,7 +7,8 @@ import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
 import LoginForm from "./components/LoginForm/LoginForm";
 import UserMenu from "./components/UserMenu/UserMenu";
-import { selectLoading } from "./redux/contacts/slice";
+import { selectLoading } from "./redux/contacts/selectors";
+
 import { BarLoader } from "react-spinners";
 import NotFoundPage from "./pages/NotFoundPage";
 import HomePage from "./pages/HomePage";
@@ -16,6 +17,7 @@ import LoginPage from "./pages/LoginPage";
 import "./App.css";
 import ContactsPage from "./pages/ContactsPage";
 import AppBar from "./components/AppBar/AppBar";
+import Layout from "./components/Layout";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,14 +29,15 @@ function App() {
 
   return (
     <>
-      <AppBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Layout>
       {/* <LoginForm /> */}
       {/* <UserMenu /> */}
       {/* <h1>Phonebook</h1> */}

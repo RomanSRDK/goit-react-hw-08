@@ -1,10 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/auth/operations";
 
 import styles from "./LoginForm.module.css";
 
 function LoginForm() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // const SignupSchema = Yup.object().shape({
   //   name: Yup.string().min(2, "Too Short!").required("Required"),
@@ -13,6 +14,7 @@ function LoginForm() {
   // });
 
   const handleSubmit = (values, actions) => {
+    dispatch(login(values));
     actions.resetForm();
   };
 
