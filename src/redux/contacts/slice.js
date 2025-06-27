@@ -20,6 +20,13 @@ const slice = createSlice({
       .addCase(fetchContacts.rejected, (state, action) => {
         state.error = action.payload;
       })
+      .addCase(addContact.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+        state.loading = false;
+      })
       .addCase(deleteContact.pending, (state) => {
         state.loading = true;
       })
@@ -27,13 +34,6 @@ const slice = createSlice({
         state.items = state.items.filter(
           (contact) => contact.id !== action.payload
         );
-        state.loading = false;
-      })
-      .addCase(addContact.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(addContact.fulfilled, (state, action) => {
-        state.items.push(action.payload);
         state.loading = false;
       });
   },
