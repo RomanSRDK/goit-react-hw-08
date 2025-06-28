@@ -8,6 +8,7 @@ export const register = createAsyncThunk(
   async (values, ThunkAPI) => {
     try {
       const { data } = await axios.post("users/signup", values);
+      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`; // Эта строка устанавливает заголовок авторизации по умолчанию для всех будущих запросов через axios
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
@@ -20,6 +21,7 @@ export const login = createAsyncThunk(
   async (values, ThunkAPI) => {
     try {
       const { data } = await axios.post("users/login", values);
+      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);

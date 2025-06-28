@@ -1,0 +1,17 @@
+.gap {
+  display: flex;
+  gap: 12px;
+}
+
+.link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.isActive {
+  text-decoration: none;
+  color: #e52b50;
+  font-weight: 600;
+  border-bottom: 2px solid #e52b50;
+}

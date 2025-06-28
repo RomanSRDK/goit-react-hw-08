@@ -6,8 +6,8 @@ function ContactsPage() {
   return (
     <>
       <ContactForm />
-      {/* <SearchBox /> */}
-      {/* <ContactList /> */}
+      <SearchBox />
+      <ContactList />
     </>
   );
 }
