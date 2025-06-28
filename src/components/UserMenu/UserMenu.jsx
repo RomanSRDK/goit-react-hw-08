@@ -9,9 +9,9 @@ function UserMenu() {
   const user = useSelector(selectUser);
 
   return (
-    <>
+    <div className={css.userMenu}>
       <div className={css.greeting}>
-        <p>Hello, {user.name}</p>
+        <p style={{ margin: 0 }}>Hello, {user.name}</p>
         <PiHandWaving />
       </div>
       <button
@@ -22,7 +22,7 @@ function UserMenu() {
       >
         Log Out
       </button>
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 .gap {
   display: flex;
   gap: 12px;
+  align-items: center;
 }
 
 .link {
