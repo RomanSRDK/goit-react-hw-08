@@ -12,3 +12,5 @@ function Layout({ children }) {
 }
 
 export default Layout;
+
+// fallback внутри Suspense - это обязательный prop, если я ничего не хочу отображать, то его значение просто ставлю null

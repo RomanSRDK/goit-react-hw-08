@@ -3,7 +3,14 @@ import { BarLoader } from "react-spinners";
 function Loader() {
   return (
     <>
-      <BarLoader color="#3fc71e" />
+      <div
+        style={{
+          display: "block",
+          margin: "0 auto",
+        }}
+      >
+        <BarLoader color="#e52b50" />
+      </div>
     </>
   );
 }
