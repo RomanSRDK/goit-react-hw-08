@@ -11,6 +11,8 @@ import LoginPage from "./pages/LoginPage";
 import ContactsPage from "./pages/ContactsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import "./App.css";
+import RestrictedRoute from "./components/RestrictedRoute";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -28,9 +30,30 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<RegistrationPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/contacts" element={<ContactsPage />} />
+            <Route
+              path="/contacts"
+              element={<PrivateRoute component={<ContactsPage />} />}
+            />
+
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/"
+                  component={<RegistrationPage />}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<LoginPage />}
+                />
+              }
+            />
+
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Layout>
